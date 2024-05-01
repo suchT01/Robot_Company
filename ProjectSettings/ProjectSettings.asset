@@ -769,11 +769,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 56eba53c-ddb2-4fde-8c79-cb10006af781
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Robot_Company
+  organizationId: jazm01
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
