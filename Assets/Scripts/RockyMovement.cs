@@ -28,16 +28,16 @@ public class RockyMovement : MonoBehaviour
 
         if (Horizontal < 0.0f)
         {
-            transform.localScale = new Vector3(-1.0f,1.0f,1.0f);
+            transform.localScale = new Vector3(-8.0f,8.0f,1.0f);
         }
         else if (Horizontal > 0.0f)
         {
-            transform.localScale = new Vector3(1.0f,1.0f,1.0f);
+            transform.localScale = new Vector3(8.0f,8.0f,1.0f);
         }
 
         Animator.SetBool("Running", Horizontal != 0.0f);
         
-        if (Physics2D.Raycast(transform.position, Vector3.down, 0.1f))
+        if (Physics2D.Raycast(transform.position, Vector3.down, 1.0f))
         {
             Grounded = true;
         }else {
