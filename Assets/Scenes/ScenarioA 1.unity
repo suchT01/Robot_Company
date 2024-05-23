@@ -221,7 +221,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1181,7 +1181,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2156,16 +2156,16 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 1215215895, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 1081217455, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 1013978082, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -1015107298, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1857756959, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -914661528, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
   - m_RefCount: 0
@@ -2176,10 +2176,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1857756959, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1215215895, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1813513306, guid: af8b7c26bbb2f00468f11b7a4c73e51d, type: 3}
   - m_RefCount: 2
@@ -2263,83 +2263,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 618661704}
-    m_ColliderPaths:
-    - - X: 120000000
-        Y: 6250000
-      - X: 120000000
-        Y: 10000000
-      - X: -30000000
-        Y: 10000000
-      - X: -30000000
-        Y: 6250000
-      - X: -28750000
-        Y: 5000000
-      - X: 118750000
-        Y: 5000000
-    - - X: -40000000
-        Y: -10000000
-      - X: -160000000
-        Y: -10000000
-      - X: -160000000
-        Y: -40000000
-      - X: -40000000
-        Y: -40000000
-    - - X: 0
-        Y: -33750000
-      - X: 0
-        Y: -30000000
-      - X: -30000000
-        Y: -30000000
-      - X: -30000000
-        Y: -33750000
-      - X: -28750000
-        Y: -35000000
-      - X: -1250000
-        Y: -35000000
-    - - X: 160000000
-        Y: -70000000
-      - X: 40000000
-        Y: -70000000
-      - X: 40000000
-        Y: -50000000
-      - X: 10000000
-        Y: -50000000
-      - X: 10000000
-        Y: -70000000
-      - X: -160000000
-        Y: -70000000
-      - X: -160000000
-        Y: -110000000
-      - X: 160000000
-        Y: -110000000
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 11.874989, y: 0.5}
-      - {x: 12, y: 0.6250108}
-      - {x: 11.99997, y: 1}
-      - {x: -3, y: 0.99997073}
-      - {x: -2.9999924, y: 0.62499243}
-      - {x: -2.8749893, y: 0.5}
-    - - {x: -4.000029, y: -4}
-      - {x: -4.000029, y: -1}
-      - {x: -16, y: -1.0000293}
-      - {x: -15.999971, y: -4}
-    - - {x: -0.1250108, y: -3.5}
-      - {x: 0, y: -3.3749893}
-      - {x: -0.000029300001, y: -3}
-      - {x: -3, y: -3.0000293}
-      - {x: -2.9999924, y: -3.3750076}
-      - {x: -2.8749893, y: -3.5}
-    - - {x: 15.999971, y: -11}
-      - {x: 15.999971, y: -7}
-      - {x: 4, y: -6.9999704}
-      - {x: 3.999971, y: -5}
-      - {x: 1, y: -5.000029}
-      - {x: 0.9999706, y: -7}
-      - {x: -16, y: -7.0000296}
-      - {x: -15.999971, y: -11}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &618661703
@@ -2375,7 +2301,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0

@@ -13,6 +13,10 @@ public class RockyMovement : MonoBehaviour
     private float Horizontal;
     private bool Grounded;
     private float LastShoot;
+    private bool isPlayerFacingRight = true;
+
+    // Variable para almacenar la velocidad antes de cambiar la orientación
+    private Vector2 savedVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +30,23 @@ public class RockyMovement : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Horizontal < 0.0f)
+        if (Horizontal < 0.0f && isPlayerFacingRight)
         {
-            transform.localScale = new Vector3(-8.0f,8.0f,1.0f);
+            isPlayerFacingRight = !isPlayerFacingRight;
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+            // Guarda la velocidad antes de cambiar la orientación
+            savedVelocity = Rigidbody2D.velocity;
         }
-        else if (Horizontal > 0.0f)
+        else if (Horizontal > 0.0f && !isPlayerFacingRight)
         {
-            transform.localScale = new Vector3(8.0f,8.0f,1.0f);
+            isPlayerFacingRight = !isPlayerFacingRight;
+            Vector3 scale = transform.localScale;
+            scale.x *= -1;
+            transform.localScale = scale;
+            // Guarda la velocidad antes de cambiar la orientación
+            savedVelocity = Rigidbody2D.velocity;
         }
 
         Animator.SetBool("Running", Horizontal != 0.0f);
@@ -65,9 +79,10 @@ public class RockyMovement : MonoBehaviour
     private void Shoot()
     {
         Vector3 direction;
-        if (transform.localScale.x == 1.0f) direction = Vector2.right;
-        else direction = Vector2.left;
-
+        if (isPlayerFacingRight)
+            direction = Vector2.right;
+        else
+            direction = Vector2.left;
 
         GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
         bullet.GetComponent<BulletPlayer>().SetDirection(direction);
@@ -75,6 +90,7 @@ public class RockyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Restaura la velocidad después de cambiar la orientación
         Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y);
     }
 }
