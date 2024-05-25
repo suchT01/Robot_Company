@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4112437398656096538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.7835498, y: -2.435199, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4112437400287115044}
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4112437398656096536
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,11 +148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 99038718253765801, guid: dc879d47bdc4d254dbde1c97f0bcb3e3, type: 3}
-  timeBetweenShoots: 1.8
+  timeBetweenShoots: 2
   shootPoint: {fileID: 4112437400287115044}
-  speed: 0.25
-  minDistance: 0.6
-  player: {fileID: 0}
+  speed: 1
+  minDistance: 4.5
 --- !u!1 &4112437400287115045
 GameObject:
   m_ObjectHideFlags: 0

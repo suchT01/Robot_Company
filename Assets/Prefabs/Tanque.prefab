@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 5227741536250058749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.558, y: -2.455, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5227741535721208361}
@@ -325,9 +325,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 99038718253765801, guid: dc879d47bdc4d254dbde1c97f0bcb3e3, type: 3}
   timeBetweenShoots: 3
   shootPoint: {fileID: 5227741535721208361}
-  speed: 0.1
-  minDistance: 1.25
-  player: {fileID: 0}
+  speed: 0.5
+  minDistance: 10
+  player: {fileID: 238708495712036732, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
 --- !u!114 &5227741536250058630
 MonoBehaviour:
   m_ObjectHideFlags: 0

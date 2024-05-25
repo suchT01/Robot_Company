@@ -10,15 +10,19 @@ public class FollowAI : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float minDistance;
-    [SerializeField] private Transform player;
+    private Transform player;
 
     private bool isFacingRight = false;
     private float lastShootTime;
     // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player == null)
+        {
+            Debug.LogError("No se encontró al jugador en la escena.");
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -36,6 +40,7 @@ public class FollowAI : MonoBehaviour
             // StopCoroutine(Shoot());
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             CancelInvoke("AttackRepeatedly");
+
         }
         // else if(Vector2.Distance(transform.position, player.position) < (minDistance - 0.3))
         // {
