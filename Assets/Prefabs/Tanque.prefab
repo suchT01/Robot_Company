@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5227741536250058744}
   - component: {fileID: 5227741536250058631}
   - component: {fileID: 5227741536250058630}
+  - component: {fileID: -1977485430729700741}
   m_Layer: 0
   m_Name: Tanque
   m_TagString: Untagged
@@ -162,7 +163,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 401230092, guid: c089712d659934e40bd2b6c73c8f1b9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -343,3 +344,24 @@ MonoBehaviour:
   projectilePrefab: {fileID: 99038718253765801, guid: dc879d47bdc4d254dbde1c97f0bcb3e3, type: 3}
   timeBetweenShoots: 2.5
   shootPoint: {fileID: 5227741535721208361}
+--- !u!95 &-1977485430729700741
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5227741536250058749}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 924e767c53bdde1448e7b0b53bbcca1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

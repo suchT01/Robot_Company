@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4112437398656096519}
   - component: {fileID: 4112437398656096536}
   - component: {fileID: 4112437398656096537}
+  - component: {fileID: 5658689888570223630}
   m_Layer: 0
   m_Name: Tirador Tier I
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1495085649, guid: c089712d659934e40bd2b6c73c8f1b9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -153,6 +154,27 @@ MonoBehaviour:
   shootPoint: {fileID: 4112437400287115044}
   speed: 1
   minDistance: 4.5
+--- !u!95 &5658689888570223630
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4112437398656096538}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2e1ceeff9fda03046992126f9627e16f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4112437400287115045
 GameObject:
   m_ObjectHideFlags: 0
