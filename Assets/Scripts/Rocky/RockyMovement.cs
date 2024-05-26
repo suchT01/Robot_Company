@@ -23,6 +23,7 @@ public class RockyMovement : MonoBehaviour
     void Start()
     {
         Rigidbody2D =  GetComponent<Rigidbody2D>();
+        Rigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate; // Suaviza el movimiento
         Animator = GetComponent<Animator>();
     }
 
@@ -30,13 +31,11 @@ public class RockyMovement : MonoBehaviour
     void Update()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
-
+        
         if (Horizontal < 0.0f && isPlayerFacingRight)
         {
             isPlayerFacingRight = !isPlayerFacingRight;
             Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
             // Guarda la velocidad antes de cambiar la orientación
             savedVelocity = Rigidbody2D.velocity;
         }
@@ -44,14 +43,17 @@ public class RockyMovement : MonoBehaviour
         {
             isPlayerFacingRight = !isPlayerFacingRight;
             Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
             // Guarda la velocidad antes de cambiar la orientación
             savedVelocity = Rigidbody2D.velocity;
         }
 
-        Animator.SetBool("Running", Horizontal != 0.0f);
+        Animator.SetFloat("Movement", Horizontal);
         
+        if (Horizontal != 0)
+        {
+            Animator.SetFloat("LastX", Horizontal);
+        }
+
         if (Physics2D.Raycast(transform.position, Vector3.down, 1.0f))
         {
             Grounded = true;
@@ -93,12 +95,13 @@ public class RockyMovement : MonoBehaviour
     {
         // Restaura la velocidad después de cambiar la orientación
         Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y);
+   
     }
 
     public void Hit(int Damage)
     {
         Health = Health - Damage;
-        if (Health == 0)
+        if (Health <= 0)
         {
             Destroy(gameObject);
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Proyectil : MonoBehaviour
+public class AsimovRBullet : MonoBehaviour
 {
     [SerializeField] private float speed;
     public int Damage;
@@ -56,6 +56,10 @@ public class Proyectil : MonoBehaviour
 
             Destroy(gameObject);
         }   
+        else if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject); // Destruir la bala al colisionar con un muro
+        }
     }
 
     void Update()

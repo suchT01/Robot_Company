@@ -23,8 +23,8 @@ public class EnemySpawner : MonoBehaviour
     {
         float peso1 = 50;
         float peso2 = 30;
-        float peso3 = 18;
-        float peso4 = 2;
+        float peso3 = 19.5f;
+        float peso4 = 0.5f;
         float pesoTotal = peso1 + peso2 + peso3 + peso4;
         // float pesoAcumulado = 0;
         float ranEnemy = Random.Range(0, pesoTotal);  

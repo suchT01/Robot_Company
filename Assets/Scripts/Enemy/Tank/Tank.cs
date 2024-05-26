@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowAI : MonoBehaviour
+public class Tank : MonoBehaviour
 {
     public int Health;
 
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float timeBetweenShoots;
     [SerializeField] private Transform shootPoint;
-
     [SerializeField] private float speed;
     [SerializeField] private float minDistance;
     private Transform player;
-
     private bool isFacingRight = false;
     private float lastShootTime;
-    // [Header("Animacion")]
-    // private Animator animator;
-    // Start is called before the first frame update
+
     void Start()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -94,13 +90,6 @@ public class FollowAI : MonoBehaviour
         }
     }
 
-    // IEnumerator Shoot(){
-    //     while(true){
-    //         yield return new WaitForSeconds(timeBetweenShoots);
-    //         Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
-    //     }
-    // }
-
     private void Flip(bool isPlayerRight)
     {
         if((isFacingRight && !isPlayerRight) || (!isFacingRight && isPlayerRight)){
@@ -114,7 +103,7 @@ public class FollowAI : MonoBehaviour
     public void Hit(int Damage)
     {
         Health = Health - Damage;
-        if (Health == 0)
+        if (Health <= 0)
         {
             Destroy(gameObject);
         }
