@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fae2becb4fd484ab3382e6a98f52c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
   projectilePrefab: {fileID: 99038718253765801, guid: dc879d47bdc4d254dbde1c97f0bcb3e3, type: 3}
   timeBetweenShoots: 1.5
   shootPoint: {fileID: 8383546696632427359}

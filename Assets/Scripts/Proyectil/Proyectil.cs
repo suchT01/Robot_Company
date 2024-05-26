@@ -5,6 +5,7 @@ using UnityEngine;
 public class Proyectil : MonoBehaviour
 {
     [SerializeField] private float speed;
+    public int Damage;
     private Transform player;
     private Rigidbody2D rb;
 
@@ -21,6 +22,11 @@ public class Proyectil : MonoBehaviour
         {
             Debug.LogWarning("No se encontró el objeto del jugador.");
         }
+    }
+
+    public void SetDamage(int Damage)
+    {
+        this.Damage = Damage;
     }
 
     private void LauchProjectile()
@@ -42,6 +48,12 @@ public class Proyectil : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Player")){
+            RockyMovement rocky = other.GetComponent<RockyMovement>();
+            if (rocky != null)
+            {
+                rocky.Hit(Damage);
+            }
+
             Destroy(gameObject);
         }   
     }

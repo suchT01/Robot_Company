@@ -6,6 +6,7 @@ public class BulletPlayer : MonoBehaviour
 {
 
     public float Speed;
+    public int Damage;
 
 
     private Rigidbody2D rb;
@@ -32,4 +33,19 @@ public class BulletPlayer : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void SetDamage(int Damage)
+    {
+        this.Damage = Damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        
+        FollowAI enemy = other.GetComponent<FollowAI>();
+        if (enemy != null)
+        {
+            enemy.Hit(Damage);
+        }
+
+        Destroy(gameObject);  
+    }
 }

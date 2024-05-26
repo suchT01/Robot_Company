@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FollowAI : MonoBehaviour
 {
+    public int Health;
+
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float timeBetweenShoots;
     [SerializeField] private Transform shootPoint;
@@ -17,8 +19,12 @@ public class FollowAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        if (player == null)
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            player = playerObject.transform;
+        }
+        else
         {
             Debug.LogError("No se encontró al jugador en la escena.");
         }
@@ -27,55 +33,42 @@ public class FollowAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Follow();
-
-        bool isPlayerRight = transform.position.x < player.transform.position.x;
-        Flip(isPlayerRight);
+        if (player != null)
+        {
+            Follow();
+            bool isPlayerRight = transform.position.x < player.position.x;
+            Flip(isPlayerRight);
+        }
+        else
+        {
+            Debug.LogWarning("El objeto del jugador ha sido destruido.");
+        }
     }
 
     private void Follow()
     {
-        if(Vector2.Distance(transform.position, player.position) > minDistance)
+        if (player != null && Vector2.Distance(transform.position, player.position) > minDistance)
         {
-            // StopCoroutine(Shoot());
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             CancelInvoke("AttackRepeatedly");
-
         }
-        // else if(Vector2.Distance(transform.position, player.position) < (minDistance - 0.3))
-        // {
-        //     Vector2 direction = (Vector2)transform.position - (Vector2)player.position;
-        //     transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, speed * Time.deltaTime);
-
-        //     // if (Time.time - lastShootTime > timeBetweenShoots)
-        //     // {
-        //     //     Attack();
-        //     //     lastShootTime = Time.time; // Actualizar el tiempo del último disparo
-        //     // }
-        //     // Attack();
-        //     // StartCoroutine(Shoot());
-        //     // transform.position = Vector2.MoveTowards(transform, (transform.position + direction), speed * Time.deltaTime);
-        // }
-        else
+        else if (player != null)
         {
-            if (!IsInvoking("AttackRepeatedly")){
+            if (!IsInvoking("AttackRepeatedly"))
+            {
                 if (Time.time - lastShootTime > timeBetweenShoots)
                 {
                     Attack();
                     lastShootTime = Time.time; // Actualizar el tiempo del último disparo
-                }   
+                }
             }
-            
 
-            if(Vector2.Distance(transform.position, player.position) < (minDistance - 0.1)){
+            if (Vector2.Distance(transform.position, player.position) < (minDistance - 0.1f))
+            {
                 Vector2 direction = (Vector2)transform.position - (Vector2)player.position;
                 transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, speed * Time.deltaTime);
             }
-            // Attack();
-            // StartCoroutine(Shoot());
         }
-        
-
     }
 
     private void Attack()  
@@ -86,7 +79,14 @@ public class FollowAI : MonoBehaviour
 
     private void AttackRepeatedly()
     {
-        Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+        if (player != null) // Verificación adicional antes de disparar
+        {
+            Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+        }
+        else
+        {
+            CancelInvoke("AttackRepeatedly");
+        }
     }
 
     // IEnumerator Shoot(){
@@ -103,6 +103,15 @@ public class FollowAI : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x *= -1;
             transform.localScale = scale;
+        }
+    }
+
+    public void Hit(int Damage)
+    {
+        Health = Health - Damage;
+        if (Health == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

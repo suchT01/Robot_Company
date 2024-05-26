@@ -140,6 +140,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 3538289356657011368, guid: adeb2f8bd6e74714d80f9097f4005485, type: 3}
   Speed: 10
   JumpForce: 1400
+  Health: 30
 --- !u!95 &238708495712036737
 Animator:
   serializedVersion: 5

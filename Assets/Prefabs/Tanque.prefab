@@ -322,12 +322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fae2becb4fd484ab3382e6a98f52c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
   projectilePrefab: {fileID: 99038718253765801, guid: dc879d47bdc4d254dbde1c97f0bcb3e3, type: 3}
   timeBetweenShoots: 3
   shootPoint: {fileID: 5227741535721208361}
   speed: 0.5
   minDistance: 10
-  player: {fileID: 238708495712036732, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
 --- !u!114 &5227741536250058630
 MonoBehaviour:
   m_ObjectHideFlags: 0

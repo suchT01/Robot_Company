@@ -7,6 +7,7 @@ public class RockyMovement : MonoBehaviour
     public GameObject BulletPrefab;
     public float Speed;
     public float JumpForce;
+    public int Health;
 
     private Animator Animator;
     private Rigidbody2D Rigidbody2D;
@@ -92,5 +93,14 @@ public class RockyMovement : MonoBehaviour
     {
         // Restaura la velocidad después de cambiar la orientación
         Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y);
+    }
+
+    public void Hit(int Damage)
+    {
+        Health = Health - Damage;
+        if (Health == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
