@@ -16,6 +16,8 @@ public class FollowAI : MonoBehaviour
 
     private bool isFacingRight = false;
     private float lastShootTime;
+    // [Header("Animacion")]
+    // private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class FollowAI : MonoBehaviour
         {
             Debug.LogError("No se encontró al jugador en la escena.");
         }
+        
     }
 
     // Update is called once per frame
@@ -50,6 +53,7 @@ public class FollowAI : MonoBehaviour
         if (player != null && Vector2.Distance(transform.position, player.position) > minDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            
             CancelInvoke("AttackRepeatedly");
         }
         else if (player != null)
@@ -67,6 +71,7 @@ public class FollowAI : MonoBehaviour
             {
                 Vector2 direction = (Vector2)transform.position - (Vector2)player.position;
                 transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction, speed * Time.deltaTime);
+                
             }
         }
     }
