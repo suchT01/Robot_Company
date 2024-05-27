@@ -159,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.370972, y: -8660}
-  m_SizeDelta: {x: -1625.709, y: -1227.891}
+  m_AnchoredPosition: {x: 21.857, y: -9755}
+  m_SizeDelta: {x: -1625.709, y: -1374.669}
   m_Pivot: {x: 0.49999994, y: 7.5243917}
 --- !u!114 &27078133
 MonoBehaviour:
@@ -339,8 +339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22, y: 655}
-  m_SizeDelta: {x: -1358.494, y: -1211.334}
+  m_AnchoredPosition: {x: 22, y: 740.37}
+  m_SizeDelta: {x: -1358.494, y: -1389.126}
   m_Pivot: {x: 0.49999988, y: -0.00000078300496}
 --- !u!114 &50018741
 MonoBehaviour:
@@ -1178,8 +1178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.56897, y: -33467}
-  m_SizeDelta: {x: -1401.92, y: -1224.15}
+  m_AnchoredPosition: {x: 1.2877808, y: -38214}
+  m_SizeDelta: {x: -1401.92, y: -1398.767}
   m_Pivot: {x: 0.5146721, y: 27.684204}
 --- !u!114 &1053186383
 MonoBehaviour:
@@ -1448,6 +1448,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174051351}
   m_CullTransparentMesh: 1
+--- !u!1 &1238701183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238701185}
+  - component: {fileID: 1238701184}
+  m_Layer: 0
+  m_Name: Salir
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1238701184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238701183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df586e38ad9a16e4485f376e370cf403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1238701185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238701183}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 297.69836, y: 253.59105, z: 1.1211479}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1323667627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,8 +1528,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22, y: -306}
-  m_SizeDelta: {x: -1625.422, y: -1217.311}
+  m_AnchoredPosition: {x: 22, y: -317}
+  m_SizeDelta: {x: -1625.422, y: -1376.054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323667629
 MonoBehaviour:
@@ -1530,7 +1574,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1323667630}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1238701184}
+        m_TargetAssemblyTypeName: salir, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1323667630
 MonoBehaviour:
   m_ObjectHideFlags: 0
