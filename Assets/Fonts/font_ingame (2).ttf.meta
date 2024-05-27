@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 2156e1bfd298b6f47bc6a458371be641
+guid: d3f0c53e3d2b9fe4ab2cb9930f23a4b5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 7
+  fontSize: 16
   forceTextureCase: 3
   characterSpacing: 0
   characterPadding: 1
@@ -11,7 +11,7 @@ TrueTypeFontImporter:
   fontNames:
   - Mystery Font
   fallbackFontReferences: []
-  customCharacters: 
+  customCharacters: "ABCDEFGHIJKLMN\xD1OPQRSTUVWXYZabcdefghijklmn\xF1opqrstuvwxyz1234567890.,!- "
   fontRenderingMode: 2
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
