@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
-{
+{   
+    public Transform[] spawnPoints;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject enemyPrefab2;
     [SerializeField] private GameObject enemyPrefab3;
@@ -23,31 +24,33 @@ public class EnemySpawner : MonoBehaviour
     {
         float peso1 = 50;
         float peso2 = 30;
-        float peso3 = 19.5f;
-        float peso4 = 0.5f;
+        float peso3 = 19.8f;
+        float peso4 = 0.2f;
         float pesoTotal = peso1 + peso2 + peso3 + peso4;
         // float pesoAcumulado = 0;
         float ranEnemy = Random.Range(0, pesoTotal);  
         timeUntilSpawn -= Time.deltaTime;
+        int randSpawnPoint = Random.Range(0, spawnPoints.Length);
+
 
         if(timeUntilSpawn <= 0){
             if(0f <= ranEnemy && ranEnemy <= peso1){
-                Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+                Instantiate(enemyPrefab, spawnPoints[randSpawnPoint].position, Quaternion.identity);
                 SetTimeUntilSpawn();
             }
 
             else if(ranEnemy >= peso1 && ranEnemy <= peso1+peso2){
-                Instantiate(enemyPrefab2, transform.position, Quaternion.identity);
+                Instantiate(enemyPrefab2, spawnPoints[randSpawnPoint].position, Quaternion.identity);
                 SetTimeUntilSpawn();
             }
 
             else if(ranEnemy >= peso1+peso2 && ranEnemy <= peso1+peso2+peso3){
-                Instantiate(enemyPrefab3, transform.position, Quaternion.identity);
+                Instantiate(enemyPrefab3, spawnPoints[randSpawnPoint].position, Quaternion.identity);
                 SetTimeUntilSpawn();
             }
 
             else if(ranEnemy >= peso1+peso2+peso3 && ranEnemy <= peso1+peso2+peso3+peso4){
-                Instantiate(enemyPrefab4, transform.position, Quaternion.identity);
+                Instantiate(enemyPrefab4, spawnPoints[randSpawnPoint].position, Quaternion.identity);
                 SetTimeUntilSpawn();
             }
             
