@@ -14,6 +14,7 @@ public class AsimovR : MonoBehaviour
     private Transform player;
     private bool isFacingRight = false;
     private float lastShootTime;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class AsimovR : MonoBehaviour
             Debug.LogError("No se encontró al jugador en la escena.");
         }
         
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -106,6 +108,7 @@ public class AsimovR : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(gameObject);
+            WaveManager.Instance.enemyDestroyed();
         }
     }
 }

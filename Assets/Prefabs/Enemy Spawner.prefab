@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7544107407248431317}
   - component: {fileID: 7544107407248431318}
+  - component: {fileID: -5116558583105281136}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -39,7 +40,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7544107407248431319}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 352130cf1247a344d89ea4f80067a00f, type: 3}
   m_Name: 
@@ -50,3 +51,29 @@ MonoBehaviour:
   enemyPrefab4: {fileID: 3223144260527150348, guid: 7e4a608835002c84288add54ce82f6db, type: 3}
   minimumSpawnTime: 5
   maximumSpawnTime: 15
+--- !u!114 &-5116558583105281136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544107407248431319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2ebb4ddc0d9de4f9c135849a41577e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 4112437398656096538, guid: 2ef015cd4b115874983791788ac7f1c8, type: 3}
+  _minimumSpawnTime: 1
+  _maximumSpawnTime: 3
+  currentRound: 1
+  enemiesRemaining: 10
+  enemiesPerRound: 2
+  contador: 1
+  isWaitingForNextWave: 0
+  waveFinished: 0
+  counterText: {fileID: 0}
+  waveText: {fileID: 0}
+  enemiesText: {fileID: 0}
+  counterToNextWave: 10
+  timeForNextWave: 10

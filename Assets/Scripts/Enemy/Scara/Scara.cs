@@ -106,6 +106,7 @@ public class Scara : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(gameObject);
+            WaveManager.Instance.enemyDestroyed();
         }
     }
 }

@@ -11,10 +11,11 @@ public class BulletPlayer : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 Direction;
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
@@ -47,18 +48,21 @@ public class BulletPlayer : MonoBehaviour
         if(asimov != null){
             asimov.Hit(Damage);
             DestroyBullet();
+            
         }
 
         else if (asimovr != null)
         {
             asimovr.Hit(Damage);
             DestroyBullet();
+            
         }
 
         else if (scara != null)
         {
             scara.Hit(Damage);
             DestroyBullet();
+            
         }
 
         else if (tank != null)

@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6504637606729427195}
   - component: {fileID: 6919469560313432726}
   - component: {fileID: 774749325878759739}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Volador Tier II
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8224855669890693649}
   - component: {fileID: 1327964076245666881}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

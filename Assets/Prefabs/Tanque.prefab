@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 29862532503014380}
   - component: {fileID: 2961823754690014538}
   - component: {fileID: 6996597377133821722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tanque
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4278243828873530630}
   - component: {fileID: 4240661332869876400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

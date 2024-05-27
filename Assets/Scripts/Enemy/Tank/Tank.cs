@@ -14,6 +14,8 @@ public class Tank : MonoBehaviour
     private Transform player;
     private bool isFacingRight = false;
     private float lastShootTime;
+    private GameManager gameManager;
+
 
     void Start()
     {
@@ -26,6 +28,8 @@ public class Tank : MonoBehaviour
         {
             Debug.LogError("No se encontró al jugador en la escena.");
         }
+        
+        gameManager = FindObjectOfType<GameManager>();
         
     }
 
@@ -106,6 +110,7 @@ public class Tank : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(gameObject);
+            WaveManager.Instance.enemyDestroyed();
         }
     }
 }

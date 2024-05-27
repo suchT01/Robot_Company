@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2647408609363271703}
   - component: {fileID: 2647408609363271696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,9 +98,9 @@ GameObject:
   - component: {fileID: 2647408611196039836}
   - component: {fileID: 2647408611196039811}
   - component: {fileID: 2647408611196039810}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tirador Tier II
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
