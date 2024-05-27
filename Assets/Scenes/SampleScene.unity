@@ -3221,10 +3221,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91e0143887e31e45920195f7f1f4d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disparo: {fileID: 0}
+  salto: {fileID: 0}
+  recibeDmg: {fileID: 0}
+  muere: {fileID: 0}
+  barraDeVida: {fileID: 0}
   BulletPrefab: {fileID: 3538289356657011368, guid: adeb2f8bd6e74714d80f9097f4005485, type: 3}
   Speed: 2
   JumpForce: 150
   Health: 0
+  maxFallSpeed: -10
 --- !u!95 &791154362
 Animator:
   serializedVersion: 5
@@ -3450,7 +3456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 123
+  m_text: jkj
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ed4a341db9c8fff4697d7f1f94ce9550, type: 2}
   m_sharedMaterial: {fileID: -9027903981641150343, guid: ed4a341db9c8fff4697d7f1f94ce9550, type: 2}
@@ -3513,7 +3519,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 13.002563, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
