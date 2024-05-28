@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RockyMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject derrota;
+    [SerializeField] private GameObject pausa;
     [SerializeField] private AudioSource disparo;
     [SerializeField] private AudioSource salto;
     [SerializeField] private AudioSource recibeDmg;
@@ -82,6 +85,17 @@ public class RockyMovement : MonoBehaviour
             LastShoot = Time.time;
         }
 
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            bool valor = true;
+            if(pausa.activeSelf){
+                pausa.SetActive(!valor);
+            }
+            else{
+                pausa.SetActive(valor);
+            }
+        }
+
     }
 
     private void Jump()
@@ -123,11 +137,17 @@ public class RockyMovement : MonoBehaviour
         {
             Destroy(gameObject);
             muere.Play();
+            derrota.SetActive(true);
         }
         else{
             barraDeVida.CambiarVidaActual(Health);
             recibeDmg.Play();
         }
+    }
+
+    private void CargarMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void Curar(int Cura){
