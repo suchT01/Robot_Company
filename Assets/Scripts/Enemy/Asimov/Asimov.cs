@@ -125,7 +125,7 @@ public class Asimov : MonoBehaviour
     private void ItemDrop(){
         int spawnRate = Random.Range(0, 100);
 
-        if(spawnRate >= 1){
+        if(spawnRate >= 95){
             Instantiate(itemDrops, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
     }

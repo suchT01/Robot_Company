@@ -15799,6 +15799,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1042182111}
     - target: {fileID: 238708495712036736, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
+      propertyPath: JumpForce
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 238708495712036736, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
       propertyPath: recibeDmg
       value: 
       objectReference: {fileID: 2040664595}
@@ -15806,6 +15810,10 @@ PrefabInstance:
       propertyPath: barraDeVida
       value: 
       objectReference: {fileID: 172982849}
+    - target: {fileID: 238708495712036736, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
+      propertyPath: maxFallSpeed
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 238708495712036738, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
       propertyPath: m_Interpolate
       value: 1

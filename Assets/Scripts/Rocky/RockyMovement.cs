@@ -22,6 +22,8 @@ public class RockyMovement : MonoBehaviour
     private float LastShoot;
     private bool isPlayerFacingRight = true;
 
+    public float maxFallSpeed = -10f;
+
     // Variable para almacenar la velocidad antes de cambiar la orientación
     private Vector2 savedVelocity;
 
@@ -105,7 +107,12 @@ public class RockyMovement : MonoBehaviour
     {
         // Restaura la velocidad después de cambiar la orientación
         Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y);
-   
+
+
+        if (Rigidbody2D.velocity.y < maxFallSpeed)
+        {
+            Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, maxFallSpeed);
+        }
     }
 
     public void Hit(int Damage)
