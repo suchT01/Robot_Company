@@ -26,6 +26,7 @@ public class RockyMovement : MonoBehaviour
     private bool isPlayerFacingRight = true;
 
     public float maxFallSpeed = -10f;
+    private Collider2D platformCollider;
 
     // Variable para almacenar la velocidad antes de cambiar la orientación
     private Vector2 savedVelocity;
@@ -96,7 +97,30 @@ public class RockyMovement : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.S) && platformCollider != null)
+        {
+            StartCoroutine(DisablePlatformCollider());
+        }
+
     }
+
+    private IEnumerator DisablePlatformCollider()
+    {
+        platformCollider.enabled = false;
+        yield return new WaitForSeconds(0.2f); // Tiempo durante el cual el personaje puede atravesar la plataforma
+        platformCollider.enabled = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("CenterWall"))
+        {
+            Debug.Log("Colission");
+            platformCollider = collision.collider;
+            Debug.Log(platformCollider);
+        }
+    }
+
 
     private void Jump()
     {

@@ -5680,9 +5680,9 @@ GameObject:
   - component: {fileID: 929257990}
   - component: {fileID: 929257993}
   - component: {fileID: 929257992}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rejas
-  m_TagString: Untagged
+  m_TagString: CenterWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16764,7 +16764,7 @@ PrefabInstance:
       objectReference: {fileID: 172982849}
     - target: {fileID: 238708495712036736, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
       propertyPath: maxFallSpeed
-      value: -25
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 238708495712036738, guid: 3f1c95c5e50a9194089c5966607f5015, type: 3}
       propertyPath: m_Interpolate

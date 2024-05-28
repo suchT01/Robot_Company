@@ -265,7 +265,7 @@ MonoBehaviour:
   timeBetweenShoots: 5
   shootPoint: {fileID: 4278243828873530630}
   speed: 0.35
-  minDistance: 12
+  minDistance: 14
   efectoMuerte: {fileID: 788863226373141022, guid: 101363c24c2ef2b49861530eb908eca1, type: 3}
   itemDrops: {fileID: 1301811055110767335, guid: 88a5d42fe91ce5042bb794d19185365b, type: 3}
 --- !u!82 &-2148176550249563339
