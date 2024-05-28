@@ -1,9 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RockyMovement : MonoBehaviour
 {
+    [SerializeField] private AudioSource disparo;
+    [SerializeField] private AudioSource salto;
+    [SerializeField] private AudioSource recibeDmg;
+    [SerializeField] private AudioSource muere;
+    [SerializeField] private BarraDeVida barraDeVida;
     public GameObject BulletPrefab;
     public float Speed;
     public float JumpForce;
@@ -25,6 +31,8 @@ public class RockyMovement : MonoBehaviour
         Rigidbody2D =  GetComponent<Rigidbody2D>();
         Rigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate; // Suaviza el movimiento
         Animator = GetComponent<Animator>();
+        barraDeVida.InicializarBarraDeVida(Health);
+        // audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,7 +62,7 @@ public class RockyMovement : MonoBehaviour
             Animator.SetFloat("LastX", Horizontal);
         }
 
-        if (Physics2D.Raycast(transform.position, Vector3.down, 1.0f))
+        if (Physics2D.Raycast(transform.position, Vector3.down, 1f))
         {
             Grounded = true;
         }else {
@@ -77,6 +85,7 @@ public class RockyMovement : MonoBehaviour
     private void Jump()
     {
         Rigidbody2D.AddForce(Vector2.up * JumpForce);
+        salto.Play();
     }
 
     private void Shoot()
@@ -89,6 +98,7 @@ public class RockyMovement : MonoBehaviour
 
         GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
         bullet.GetComponent<BulletPlayer>().SetDirection(direction);
+        disparo.Play();
     }
 
     private void FixedUpdate()
@@ -101,9 +111,26 @@ public class RockyMovement : MonoBehaviour
     public void Hit(int Damage)
     {
         Health = Health - Damage;
+        
         if (Health <= 0)
         {
             Destroy(gameObject);
+            muere.Play();
+        }
+        else{
+            barraDeVida.CambiarVidaActual(Health);
+            recibeDmg.Play();
+        }
+    }
+
+    public void Curar(int Cura){
+        if(Health <= 95){
+            Health = Health + Cura;
+            barraDeVida.CambiarVidaActual(Health);
+        }
+        else if(Health > 100){
+            Health = 100;
+            barraDeVida.CambiarVidaActual(Health);
         }
     }
 }

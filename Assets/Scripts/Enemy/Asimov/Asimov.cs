@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Asimov : MonoBehaviour
 {
     public int Health;
-
+    private AudioSource dañoBot;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float timeBetweenShoots;
     [SerializeField] private Transform shootPoint;
@@ -15,6 +16,8 @@ public class Asimov : MonoBehaviour
     private bool isFacingRight = false;
     private float lastShootTime;
     private GameManager gameManager;
+    [SerializeField] private GameObject efectoMuerte;
+    [SerializeField] private GameObject itemDrops;
 
     void Start()
     {
@@ -29,6 +32,7 @@ public class Asimov : MonoBehaviour
         }
         
         gameManager = FindObjectOfType<GameManager>();
+        dañoBot =  GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -105,10 +109,24 @@ public class Asimov : MonoBehaviour
     public void Hit(int Damage)
     {
         Health = Health - Damage;
+        dañoBot.Play();
         if (Health <= 0)
         {
+            dañoBot.Play();
+            Vector3 newPosition = transform.position + new Vector3(0f, 0.5f, 0f);
+            Instantiate(efectoMuerte, newPosition, Quaternion.identity);
             Destroy(gameObject);
+            ItemDrop();
             WaveManager.Instance.enemyDestroyed();
+            
+        }
+    }
+
+    private void ItemDrop(){
+        int spawnRate = Random.Range(0, 100);
+
+        if(spawnRate >= 1){
+            Instantiate(itemDrops, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
     }
 }

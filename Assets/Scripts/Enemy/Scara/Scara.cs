@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scara : MonoBehaviour
 {
     public int Health;
-
+    private AudioSource dañoBot;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float timeBetweenShoots;
     [SerializeField] private Transform shootPoint;
@@ -14,6 +14,8 @@ public class Scara : MonoBehaviour
     private Transform player;
     private bool isFacingRight = false;
     private float lastShootTime;
+    [SerializeField] private GameObject efectoMuerte;
+    [SerializeField] private GameObject itemDrops;
 
     void Start()
     {
@@ -26,6 +28,7 @@ public class Scara : MonoBehaviour
         {
             Debug.LogError("No se encontró al jugador en la escena.");
         }
+        dañoBot =  GetComponent<AudioSource>();
         
     }
 
@@ -103,10 +106,24 @@ public class Scara : MonoBehaviour
     public void Hit(int Damage)
     {
         Health = Health - Damage;
+        dañoBot.Play();
         if (Health <= 0)
         {
+            dañoBot.Play();
+            Vector3 newPosition = transform.position + new Vector3(0f, 0.5f, 0f);
+            Instantiate(efectoMuerte, newPosition, Quaternion.identity);
             Destroy(gameObject);
+            ItemDrop();
             WaveManager.Instance.enemyDestroyed();
+            
+        }
+    }
+
+    private void ItemDrop(){
+        int spawnRate = Random.Range(0, 100);
+
+        if(spawnRate >= 95){
+            Instantiate(itemDrops, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
     }
 }
