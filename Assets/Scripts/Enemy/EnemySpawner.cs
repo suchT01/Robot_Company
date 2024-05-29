@@ -30,7 +30,8 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         timer += 1 * Time.deltaTime;
-        textoTimer.text = "" + timer.ToString("f0");
+        int tiempoRedondeado = Mathf.FloorToInt(timer);
+        textoTimer.text = tiempoRedondeado.ToString();
 
         if(timer <= 120){
             float peso1 = 50;
