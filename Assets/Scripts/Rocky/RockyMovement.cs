@@ -14,6 +14,7 @@ public class RockyMovement : MonoBehaviour
     [SerializeField] private AudioSource muere;
     [SerializeField] private BarraDeVida barraDeVida;
     [SerializeField] private GameObject soundEffects;
+    [SerializeField] private GameObject iconoMute;
     public GameObject BulletPrefab;
     public float Speed;
     public float JumpForce;
@@ -133,6 +134,8 @@ public class RockyMovement : MonoBehaviour
 
     private void mutear(){
         controlMute muteCamara = GameObject.Find("Main Camera").GetComponent<controlMute>();
+        // GameObject iconoMute = GameObject.Find("Mute");
+
         if (muteCamara != null) {
             Debug.Log("exito");
         }
@@ -141,13 +144,22 @@ public class RockyMovement : MonoBehaviour
     
     // Muta la música antes de cambiar el estado de los efectos de sonido
         muteCamara.muteaMusica(valor);
+
+        if(iconoMute.activeSelf){
+            iconoMute.SetActive(!valor);
+        }
+        else{
+            iconoMute.SetActive(valor);
+        }
     
     // Cambia el estado de los efectos de sonido después de mutar la música
         if(soundEffects.activeSelf){
             soundEffects.SetActive(!valor);
+            // iconoMute.SetActive(!valor);
         }
         else{
             soundEffects.SetActive(valor);
+            // iconoMute.SetActive(valor);
         }
     }
 
