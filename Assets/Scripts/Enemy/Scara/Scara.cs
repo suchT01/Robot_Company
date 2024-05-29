@@ -16,6 +16,8 @@ public class Scara : MonoBehaviour
     private float lastShootTime;
     [SerializeField] private GameObject efectoMuerte;
     [SerializeField] private GameObject itemDrops;
+    [SerializeField] private GameObject dropBomba;
+    [SerializeField] private GameObject dropEscudo;
 
     void Start()
     {
@@ -120,10 +122,21 @@ public class Scara : MonoBehaviour
     }
 
     private void ItemDrop(){
-        int spawnRate = Random.Range(0, 100);
+        float pesoBomba = 2;
+        float pesoVida = 5;
+        float pesoEscudo = 3;
+        float pesoNada = 90;
+        float pesoTotal = pesoBomba+pesoVida+pesoEscudo+pesoNada;
+        float spawnRate = Random.Range(0, pesoTotal);
 
-        if(spawnRate >= 95){
+        if(spawnRate >= 90 && spawnRate < 95){
             Instantiate(itemDrops, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+        else if(spawnRate >= 95 && spawnRate < 98){
+            Instantiate(dropBomba, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        }
+        else if(spawnRate >= 98 && spawnRate < 100){
+            Instantiate(dropBomba, transform.position + new Vector3(0,1,0), Quaternion.identity);
         }
     }
 }

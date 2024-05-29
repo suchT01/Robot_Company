@@ -27,16 +27,16 @@ public class ItemDrop : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        RockyMovement rocky = collision.gameObject.GetComponent<RockyMovement>();
+        RockyMovement rocky = collider.gameObject.GetComponent<RockyMovement>();
 
         if (rocky != null)
         {
             rocky.Curar(Cura);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("Wall"))
+        else if (collider.gameObject.CompareTag("Wall"))
         {
             // Amen
         }

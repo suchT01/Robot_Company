@@ -59,7 +59,11 @@ public class AsimovBullet : MonoBehaviour
         else if (other.CompareTag("Wall"))
         {
             Destroy(gameObject); // Destruir la bala al colisionar con un muro
-        }  
+        }
+        else if (other.CompareTag("dropEscudo"))
+        {
+            Destroy(gameObject); // Destruir la bala al colisionar con el escudo
+        }    
     }
 
     void Update()

@@ -30,6 +30,8 @@ public class RockyMovement : MonoBehaviour
 
     // Variable para almacenar la velocidad antes de cambiar la orientación
     private Vector2 savedVelocity;
+    [SerializeField] private GameObject escudo;
+    public int tiempoEscudo = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -111,13 +113,25 @@ public class RockyMovement : MonoBehaviour
         platformCollider.enabled = true;
     }
 
+    public void desactivaEscudo()
+    {
+        escudo.SetActive(false);
+    }
+
+    public IEnumerator activarEscudoTemporal()
+    {
+        escudo.SetActive(true);
+        Debug.Log("Escudo Activado");
+        yield return new WaitForSeconds(tiempoEscudo); 
+        desactivaEscudo();
+        Debug.Log("Escudo Desactivado");
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("CenterWall"))
         {
-            Debug.Log("Colission");
             platformCollider = collision.collider;
-            Debug.Log(platformCollider);
         }
     }
 

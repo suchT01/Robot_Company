@@ -156,7 +156,9 @@ MonoBehaviour:
   speed: 1.5
   minDistance: 4.5
   efectoMuerte: {fileID: 788863226373141022, guid: 101363c24c2ef2b49861530eb908eca1, type: 3}
-  itemDrops: {fileID: 1301811055110767335, guid: 88a5d42fe91ce5042bb794d19185365b, type: 3}
+  itemDrops: {fileID: 1620840409751168336, guid: edd606d8f6fe0eb43aefc5ca5c55d817, type: 3}
+  dropBomba: {fileID: 3056059059536532139, guid: 335cb803b7426fa4383598cf8b14fe34, type: 3}
+  dropEscudo: {fileID: 5087958193620429863, guid: 645c99cc31c8f674a80c51bc91b4529e, type: 3}
 --- !u!95 &5658689888570223630
 Animator:
   serializedVersion: 5

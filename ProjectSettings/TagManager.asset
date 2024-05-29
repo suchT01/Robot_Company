@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Spawner
   - CenterWall
+  - dropEscudo
   layers:
   - Default
   - TransparentFX
