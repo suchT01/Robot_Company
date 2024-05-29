@@ -41,6 +41,7 @@ public class RockyMovement : MonoBehaviour
         Animator = GetComponent<Animator>();
         barraDeVida.InicializarBarraDeVida(Health);
         // audioSource = GetComponent<AudioSource>();
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
@@ -185,12 +186,14 @@ public class RockyMovement : MonoBehaviour
                 Destroy(gameObject);
                 muere.Play();
                 derrota.SetActive(true);
+                Time.timeScale = 0f;
             }
             else{
                 barraDeVida.CambiarVidaActual(Health);
                 Destroy(gameObject);
                 muere.Play();
                 derrota.SetActive(true);
+                Time.timeScale = 0f;
             }
         }
         else{
