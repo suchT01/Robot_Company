@@ -136,7 +136,7 @@ public class Asimov : MonoBehaviour
             Instantiate(itemDrops, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         }
         else if(spawnRate >= 95 && spawnRate < 98){
-            Instantiate(dropBomba, transform.position + new Vector3(0,1,0), Quaternion.identity);
+            Instantiate(dropEscudo, transform.position + new Vector3(0,1,0), Quaternion.identity);
         }
         else if(spawnRate >= 98 && spawnRate < 100){
             Instantiate(dropBomba, transform.position + new Vector3(0,1,0), Quaternion.identity);

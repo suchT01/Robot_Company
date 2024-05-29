@@ -14,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float minimumSpawnTime;
     [SerializeField] private float maximumSpawnTime;
     [SerializeField] private TextMeshProUGUI textoTimer; 
+    [SerializeField] private GameObject logroPacifista;
+    [SerializeField] private GameObject logroRonda;  
     public float timer = 0;
     private float timeUntilSpawn;
 
@@ -104,6 +106,19 @@ public class EnemySpawner : MonoBehaviour
         }
 
         else if(timer>300){
+            if(timer>=300 && timer<305){
+                StartCoroutine(activarLogro());
+                if(logroRonda.transform.position.x <= 500){
+                    logroRonda.transform.position = logroRonda.transform.position + new Vector3(5,0,0); 
+                }
+            }
+
+            else if(logroRonda.transform.position.x >= -723){
+                    logroRonda.transform.position = logroRonda.transform.position + new Vector3(-6,0,0); 
+            }
+            // else{
+            //     desactivarLogro();
+            // }
             float peso1 = 10;
             float peso2 = 40;
             float peso3 = 40;
@@ -116,6 +131,7 @@ public class EnemySpawner : MonoBehaviour
             timeUntilSpawn -= Time.deltaTime;
             int randSpawnPoint = Random.Range(0, spawnPoints.Length);
 
+            
 
             if(timeUntilSpawn <= 0){
                 if(0f <= ranEnemy && ranEnemy <= peso1){
@@ -141,6 +157,17 @@ public class EnemySpawner : MonoBehaviour
             }
         }
         
+    }
+
+    private IEnumerator activarLogro()
+    {
+        logroRonda.SetActive(true);
+        yield return new WaitForSeconds(10); 
+        logroRonda.SetActive(false);
+    }
+
+    private void desactivarLogro(){
+        logroRonda.SetActive(false); 
     }
 
     private void SetTimeUntilSpawn(){
