@@ -108,10 +108,10 @@ public class Scara : MonoBehaviour
     public void Hit(int Damage)
     {
         Health = Health - Damage;
-        dañoBot.Play();
+        // dañoBot.Play();
         if (Health <= 0)
         {
-            dañoBot.Play();
+            // dañoBot.Play();
             Vector3 newPosition = transform.position + new Vector3(0f, 0.5f, 0f);
             Instantiate(efectoMuerte, newPosition, Quaternion.identity);
             Destroy(gameObject);

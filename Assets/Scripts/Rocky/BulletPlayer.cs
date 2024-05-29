@@ -11,11 +11,12 @@ public class BulletPlayer : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 Direction;
+    // private AudioSource dañoBot;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+        // dañoBot =  GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

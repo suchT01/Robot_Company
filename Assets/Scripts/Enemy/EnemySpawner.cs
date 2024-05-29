@@ -29,6 +29,10 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject playerObject = GameObject.Find("Rocky");
+        RockyMovement rocky = playerObject.GetComponent<RockyMovement>();
+        int cDisparo = rocky.contadorDisparos;
+
         timer += 1 * Time.deltaTime;
         int tiempoRedondeado = Mathf.FloorToInt(timer);
         textoTimer.text = tiempoRedondeado.ToString();
@@ -70,6 +74,17 @@ public class EnemySpawner : MonoBehaviour
         }
 
         else if(timer>120 && timer<=300){
+            if(timer>=120 && timer<125 && cDisparo==0){
+                StartCoroutine(activarLogro2());
+                if(logroPacifista.transform.position.x <= 500){
+                    logroPacifista.transform.position = logroPacifista.transform.position + new Vector3(5,0,0); 
+                }
+            }
+
+            else if(logroPacifista.transform.position.x >= -723){
+                    logroPacifista.transform.position = logroPacifista.transform.position + new Vector3(-6,0,0); 
+            }
+
             float peso1 = 25;
             float peso2 = 45;
             float peso3 = 27;
@@ -168,8 +183,19 @@ public class EnemySpawner : MonoBehaviour
         logroRonda.SetActive(false);
     }
 
+    private IEnumerator activarLogro2()
+    {
+        logroPacifista.SetActive(true);
+        yield return new WaitForSeconds(10); 
+        logroPacifista.SetActive(false);
+    }
+
     private void desactivarLogro(){
         logroRonda.SetActive(false); 
+    }
+
+    private void desactivarLogro2(){
+        logroPacifista.SetActive(false); 
     }
 
     private void SetTimeUntilSpawn(){

@@ -4,17 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RockyMovement : MonoBehaviour
+public class RockyNinja : MonoBehaviour
 {
     [SerializeField] private GameObject derrota;
     [SerializeField] private GameObject pausa;
-    [SerializeField] private AudioSource disparo;
+    // [SerializeField] private AudioSource disparo;
     [SerializeField] private AudioSource salto;
     [SerializeField] private AudioSource recibeDmg;
     [SerializeField] private AudioSource muere;
     [SerializeField] private BarraDeVida barraDeVida;
-    [SerializeField] private GameObject soundEffects;
-    public GameObject BulletPrefab;
+    // public GameObject BulletPrefab;
     public float Speed;
     public float JumpForce;
     public int Health;
@@ -23,7 +22,7 @@ public class RockyMovement : MonoBehaviour
     private Rigidbody2D Rigidbody2D;
     private float Horizontal;
     private bool Grounded;
-    private float LastShoot;
+    // private float LastShoot;
     private bool isPlayerFacingRight = true;
 
     public float maxFallSpeed = -10f;
@@ -33,9 +32,6 @@ public class RockyMovement : MonoBehaviour
     private Vector2 savedVelocity;
     [SerializeField] private GameObject escudo;
     public int tiempoEscudo = 3;
-    public int contadorDisparos = 0;
-    private GameObject camara;
-    // public controlMute controladorCamara;
 
     // Start is called before the first frame update
     void Start()
@@ -44,15 +40,6 @@ public class RockyMovement : MonoBehaviour
         Rigidbody2D.interpolation = RigidbodyInterpolation2D.Interpolate; // Suaviza el movimiento
         Animator = GetComponent<Animator>();
         barraDeVida.InicializarBarraDeVida(Health);
-        // camara = 
-        // controladorCamara = Find.GetComponent<controlMute>();
-
-        // if(controladorCamara != null){
-        //     Debug.Log("exito");
-        // }
-        // else{
-        //     Debug.Log("error");
-        // }
         // audioSource = GetComponent<AudioSource>();
         Time.timeScale = 1f;
     }
@@ -96,11 +83,12 @@ public class RockyMovement : MonoBehaviour
             Jump();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > LastShoot + 0.25f)
-        {
-            Shoot();
-            LastShoot = Time.time;
-        }
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+
+        //     // Shoot();
+        //     // LastShoot = Time.time;
+        // }
 
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
@@ -110,11 +98,6 @@ public class RockyMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) && platformCollider != null)
         {
             StartCoroutine(DisablePlatformCollider());
-        }
-        
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            mutear();
         }
 
     }
@@ -128,26 +111,6 @@ public class RockyMovement : MonoBehaviour
         else{
             pausa.SetActive(valor);
             Time.timeScale = 0f;
-        }
-    }
-
-    private void mutear(){
-        controlMute muteCamara = GameObject.Find("Main Camera").GetComponent<controlMute>();
-        if (muteCamara != null) {
-            Debug.Log("exito");
-        }
-    
-        bool valor = true;
-    
-    // Muta la música antes de cambiar el estado de los efectos de sonido
-        muteCamara.muteaMusica(valor);
-    
-    // Cambia el estado de los efectos de sonido después de mutar la música
-        if(soundEffects.activeSelf){
-            soundEffects.SetActive(!valor);
-        }
-        else{
-            soundEffects.SetActive(valor);
         }
     }
 
@@ -187,19 +150,18 @@ public class RockyMovement : MonoBehaviour
         salto.Play();
     }
 
-    private void Shoot()
-    {
-        Vector3 direction;
-        if (isPlayerFacingRight)
-            direction = Vector2.right;
-        else
-            direction = Vector2.left;
+    // private void Shoot()
+    // {
+    //     Vector3 direction;
+    //     if (isPlayerFacingRight)
+    //         direction = Vector2.right;
+    //     else
+    //         direction = Vector2.left;
 
-        GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
-        contadorDisparos++;
-        bullet.GetComponent<BulletPlayer>().SetDirection(direction);
-        disparo.Play();
-    }
+    //     GameObject bullet = Instantiate(BulletPrefab, transform.position + direction * 0.1f, Quaternion.identity);
+    //     bullet.GetComponent<BulletPlayer>().SetDirection(direction);
+    //     disparo.Play();
+    // }
 
     private void FixedUpdate()
     {
