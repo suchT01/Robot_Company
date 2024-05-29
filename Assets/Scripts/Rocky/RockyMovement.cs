@@ -179,9 +179,19 @@ public class RockyMovement : MonoBehaviour
         
         if (Health <= 0)
         {
-            Destroy(gameObject);
-            muere.Play();
-            derrota.SetActive(true);
+            if(Health < 0){
+                Health = 0;
+                barraDeVida.CambiarVidaActual(Health);
+                Destroy(gameObject);
+                muere.Play();
+                derrota.SetActive(true);
+            }
+            else{
+                barraDeVida.CambiarVidaActual(Health);
+                Destroy(gameObject);
+                muere.Play();
+                derrota.SetActive(true);
+            }
         }
         else{
             barraDeVida.CambiarVidaActual(Health);
