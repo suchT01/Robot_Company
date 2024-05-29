@@ -23,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         SetTimeUntilSpawn();
+        // timer += 1 * Time.deltaTime;
     }
 
     // Update is called once per frame
