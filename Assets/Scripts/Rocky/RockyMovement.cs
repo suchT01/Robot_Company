@@ -90,13 +90,7 @@ public class RockyMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
-            bool valor = true;
-            if(pausa.activeSelf){
-                pausa.SetActive(!valor);
-            }
-            else{
-                pausa.SetActive(valor);
-            }
+            pausar();
         }
 
         if (Input.GetKeyDown(KeyCode.S) && platformCollider != null)
@@ -104,6 +98,18 @@ public class RockyMovement : MonoBehaviour
             StartCoroutine(DisablePlatformCollider());
         }
 
+    }
+
+    private void pausar(){
+        bool valor = true;
+        if(pausa.activeSelf){
+            pausa.SetActive(!valor);
+            Time.timeScale = 1f;
+        }
+        else{
+            pausa.SetActive(valor);
+            Time.timeScale = 0f;
+        }
     }
 
     private IEnumerator DisablePlatformCollider()
