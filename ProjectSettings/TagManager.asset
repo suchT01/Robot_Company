@@ -9,6 +9,7 @@ TagManager:
   - Spawner
   - CenterWall
   - dropEscudo
+  - escudito
   layers:
   - Default
   - TransparentFX
