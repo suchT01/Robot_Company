@@ -16,6 +16,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoTimer; 
     [SerializeField] private GameObject logroPacifista;
     [SerializeField] private GameObject logroRonda;  
+    private AudioSource[] audioRonda;
+    private AudioSource[] audioPacifista;
+    private bool audioReproducido = false;
+    private bool audioReproducido2 = false;
     public float timer = 0;
     private float timeUntilSpawn;
 
@@ -23,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         SetTimeUntilSpawn();
+        audioRonda = FindObjectsOfType<AudioSource>();
+        audioPacifista = FindObjectsOfType<AudioSource>();
         // timer += 1 * Time.deltaTime;
     }
 
@@ -75,6 +81,11 @@ public class EnemySpawner : MonoBehaviour
 
         else if(timer>120 && timer<=300){
             if(timer>=120 && timer<125 && cDisparo==0){
+                if(!audioReproducido2){
+                    audioLogro2();
+                    audioReproducido2 = true;
+                }
+
                 StartCoroutine(activarLogro2());
                 if(logroPacifista.transform.position.x <= 500){
                     logroPacifista.transform.position = logroPacifista.transform.position + new Vector3(5,0,0); 
@@ -124,6 +135,13 @@ public class EnemySpawner : MonoBehaviour
 
         else if(timer>300){
             if(timer>=300 && timer<305){
+                if(!audioReproducido){
+                    // Debug.Log("segundo 301");
+                    audioLogro();
+                    audioReproducido = true;
+                }
+                 // Establecer la bandera a true para que no se reproduzca nuevamente
+                      
                 StartCoroutine(activarLogro());
                 if(logroRonda.transform.position.x <= 500){
                     logroRonda.transform.position = logroRonda.transform.position + new Vector3(5,0,0); 
@@ -181,6 +199,34 @@ public class EnemySpawner : MonoBehaviour
         logroRonda.SetActive(true);
         yield return new WaitForSeconds(10); 
         logroRonda.SetActive(false);
+    }
+
+    private void audioLogro(){
+        // Debug.Log("reproducir audio");
+        List<AudioSource> rondaAudio = new List<AudioSource>();
+            foreach (AudioSource audioSource in audioRonda)
+            {
+                if (audioSource.gameObject.CompareTag("aRonda"))
+                {
+                    rondaAudio.Add(audioSource);
+                }
+            }
+        // int escogeAudio = Random.Range(0, bomboclatAudios.Count);
+        rondaAudio[0].Play();
+    }
+
+    private void audioLogro2(){
+        // Debug.Log("reproducir audio");
+        List<AudioSource> pacifistaAudio = new List<AudioSource>();
+            foreach (AudioSource audioSource in audioPacifista)
+            {
+                if (audioSource.gameObject.CompareTag("aPaz"))
+                {
+                    pacifistaAudio.Add(audioSource);
+                }
+            }
+        // int escogeAudio = Random.Range(0, bomboclatAudios.Count);
+        pacifistaAudio[0].Play();
     }
 
     private IEnumerator activarLogro2()

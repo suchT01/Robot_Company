@@ -261,6 +261,9 @@ public class RockyMovement : MonoBehaviour
     public void Curar(int Cura){
         if(Health <= 95){
             Health = Health + Cura;
+            if(Health > 100){
+                Health = 100;
+            }
             barraDeVida.CambiarVidaActual(Health);
         }
         else if(Health > 100){

@@ -10,6 +10,9 @@ TagManager:
   - CenterWall
   - dropEscudo
   - escudito
+  - bomboclat
+  - yebari
+  - aRonda
   layers:
   - Default
   - TransparentFX

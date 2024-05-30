@@ -14,6 +14,7 @@ public class escudoDrop : MonoBehaviour
     private GameObject escudo;
     private GameObject player;
     private RockyMovement rocky;
+    private AudioSource[] yebari;
     // public controladorEscudo shield;
     
     void Start()
@@ -25,6 +26,7 @@ public class escudoDrop : MonoBehaviour
         itemRb.AddForce(Vector2.up * dropForce, ForceMode2D.Impulse);
         player = GameObject.FindGameObjectWithTag("Player");
         escudo = GameObject.FindGameObjectWithTag("dropEscudo");
+        yebari = FindObjectsOfType<AudioSource>();
         if(escudo != null){
             Debug.Log("objeto encontrado");
         }
@@ -78,6 +80,16 @@ public class escudoDrop : MonoBehaviour
 
         if (rocky != null)
         {
+            List<AudioSource> yebariAudios = new List<AudioSource>();
+            foreach (AudioSource audioSource in yebari)
+            {
+                if (audioSource.gameObject.CompareTag("yebari"))
+                {
+                    yebariAudios.Add(audioSource);
+                }
+            }
+            int escogeAudio = Random.Range(0, yebariAudios.Count);
+            yebariAudios[escogeAudio].Play();
             boxCd.enabled = false;
             cuadro.enabled = false;
             baseEscudo.enabled = false;

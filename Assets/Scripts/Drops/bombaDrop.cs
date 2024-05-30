@@ -9,6 +9,7 @@ public class bombaDrop : MonoBehaviour
     public float dropForce = 5;
     private GameObject[] enemiesObject;
     [SerializeField] private GameObject efectoMuerte;
+    private AudioSource[] bomboclat;
     
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class bombaDrop : MonoBehaviour
         itemRb = GetComponent<Rigidbody2D>();
         itemRb.AddForce(Vector2.up * dropForce, ForceMode2D.Impulse);
         enemiesObject = GameObject.FindGameObjectsWithTag("Enemy");
+        bomboclat = FindObjectsOfType<AudioSource>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,16 @@ public class bombaDrop : MonoBehaviour
 
         if (rocky != null)
         {
+            List<AudioSource> bomboclatAudios = new List<AudioSource>();
+            foreach (AudioSource audioSource in bomboclat)
+            {
+                if (audioSource.gameObject.CompareTag("bomboclat"))
+                {
+                    bomboclatAudios.Add(audioSource);
+                }
+            }
+            int escogeAudio = Random.Range(0, bomboclatAudios.Count);
+            bomboclatAudios[escogeAudio].Play();
             eliminaEnemigos();
             Destroy(gameObject);
         }
@@ -57,6 +69,6 @@ public class bombaDrop : MonoBehaviour
         {
             // Amen
         }
-}
+    }
 
 }
