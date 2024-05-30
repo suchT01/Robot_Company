@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6303563598223672228}
   - component: {fileID: 6303563598223672231}
   - component: {fileID: 6303563598223672230}
-  - component: {fileID: 6303563598223672233}
   - component: {fileID: 6303563598223672232}
+  - component: {fileID: 3715219348714313383}
   m_Layer: 7
   m_Name: EscudoDrop
   m_TagString: escudito
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 65389bbb303237c4d915d9dab6bbd7c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -135,20 +135,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6303563598223672233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6303563598223672235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47f46af517bec04496315bb51c9d1a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropForce: 5
-  tiempoEscudo: 10
 --- !u!70 &6303563598223672232
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -165,3 +151,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00000004360137, y: -0.36575484}
   m_Size: {x: 1.0000002, y: 0.26849207}
   m_Direction: 1
+--- !u!114 &3715219348714313383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6303563598223672235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00dd8023c53b3468a1efc96faf1c38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropForce: 5
+  tiempoEscudo: 10

@@ -8,11 +8,13 @@ public class ItemDrop : MonoBehaviour
     private Rigidbody2D itemRb;
     public float dropForce = 5;
     public int Cura = 10;
+    private AudioSource[] heal;
     // Start is called before the first frame update
     void Start()
     {
         itemRb = GetComponent<Rigidbody2D>();
         itemRb.AddForce(Vector2.up * dropForce, ForceMode2D.Impulse);
+        heal = FindObjectsOfType<AudioSource>();
     }
 
     // Update is called once per frame
@@ -33,6 +35,17 @@ public class ItemDrop : MonoBehaviour
 
         if (rocky != null)
         {
+            // List<AudioSource> healAudios = new List<AudioSource>();
+            // foreach (AudioSource audioSource in heal)
+            // {
+            //     if (audioSource.gameObject.CompareTag("heal"))
+            //     {
+            //         healAudios.Add(audioSource);
+            //     }
+            // }
+            // // int escogeAudio = Random.Range(0, healAudios.Count);
+            // healAudios[0].Play();
+
             rocky.Curar(Cura);
             Destroy(gameObject);
         }

@@ -80,16 +80,16 @@ public class escudoDrop : MonoBehaviour
 
         if (rocky != null)
         {
-            List<AudioSource> yebariAudios = new List<AudioSource>();
-            foreach (AudioSource audioSource in yebari)
-            {
-                if (audioSource.gameObject.CompareTag("yebari"))
-                {
-                    yebariAudios.Add(audioSource);
-                }
-            }
-            int escogeAudio = Random.Range(0, yebariAudios.Count);
-            yebariAudios[escogeAudio].Play();
+            // List<AudioSource> yebariAudios = new List<AudioSource>();
+            // foreach (AudioSource audioSource in yebari)
+            // {
+            //     if (audioSource.gameObject.CompareTag("yebari"))
+            //     {
+            //         yebariAudios.Add(audioSource);
+            //     }
+            // }
+            // int escogeAudio = Random.Range(0, yebariAudios.Count);
+            // yebariAudios[escogeAudio].Play();
             boxCd.enabled = false;
             cuadro.enabled = false;
             baseEscudo.enabled = false;

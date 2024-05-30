@@ -52,16 +52,16 @@ public class bombaDrop : MonoBehaviour
 
         if (rocky != null)
         {
-            List<AudioSource> bomboclatAudios = new List<AudioSource>();
-            foreach (AudioSource audioSource in bomboclat)
-            {
-                if (audioSource.gameObject.CompareTag("bomboclat"))
-                {
-                    bomboclatAudios.Add(audioSource);
-                }
-            }
-            int escogeAudio = Random.Range(0, bomboclatAudios.Count);
-            bomboclatAudios[escogeAudio].Play();
+            // List<AudioSource> bomboclatAudios = new List<AudioSource>();
+            // foreach (AudioSource audioSource in bomboclat)
+            // {
+            //     if (audioSource.gameObject.CompareTag("bomboclat"))
+            //     {
+            //         bomboclatAudios.Add(audioSource);
+            //     }
+            // }
+            // int escogeAudio = Random.Range(0, bomboclatAudios.Count);
+            // bomboclatAudios[escogeAudio].Play();
             eliminaEnemigos();
             Destroy(gameObject);
         }
