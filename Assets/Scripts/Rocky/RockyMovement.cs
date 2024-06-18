@@ -28,6 +28,7 @@ public class RockyMovement : MonoBehaviour
     private bool isPlayerFacingRight = true;
 
     public float maxFallSpeed = -10f;
+    public float maxJumpForce;
     private Collider2D platformCollider;
 
     // Variable para almacenar la velocidad antes de cambiar la orientación
@@ -218,10 +219,16 @@ public class RockyMovement : MonoBehaviour
         // Restaura la velocidad después de cambiar la orientación
         Rigidbody2D.velocity = new Vector2(Horizontal * Speed, Rigidbody2D.velocity.y);
 
-
+        // Condicion que evalua si la velocidad de caida del persona aumenta mucho, le pone un limite fijo
         if (Rigidbody2D.velocity.y < maxFallSpeed)
         {
             Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, maxFallSpeed);
+        }
+
+        // Condicion que evalua si la velocidad de salto es muy grande, le fija un limite
+        if (Rigidbody2D.velocity.y > maxJumpForce)
+        {
+            Rigidbody2D.velocity = new Vector2(Rigidbody2D.velocity.x, maxJumpForce);
         }
     }
 

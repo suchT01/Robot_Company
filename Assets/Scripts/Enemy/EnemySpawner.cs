@@ -26,122 +26,71 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        // Funcion que instancia los audios de las rondas al principio
+
         SetTimeUntilSpawn();
         audioRonda = FindObjectsOfType<AudioSource>();
         audioPacifista = FindObjectsOfType<AudioSource>();
-        // timer += 1 * Time.deltaTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Update se encarga de actualizar el juego cada frame
+
+        // Se busca al jugador principal para inicializar el contador de disparos y verificar requisitos del logro ninja
         GameObject playerObject = GameObject.Find("Rocky");
         RockyMovement rocky = playerObject.GetComponent<RockyMovement>();
         int cDisparo = rocky.contadorDisparos;
 
+        // Se inicializa el contador general
         timer += 1 * Time.deltaTime;
         int tiempoRedondeado = Mathf.FloorToInt(timer);
         textoTimer.text = tiempoRedondeado.ToString();
 
+        // Condicion que verifica la primera etapa del juego
         if(timer <= 120){
-            float peso1 = 50;
-            float peso2 = 30;
-            float peso3 = 19.8f;
-            float peso4 = 0.2f;
-            float pesoTotal = peso1 + peso2 + peso3 + peso4;
-            // float pesoAcumulado = 0;
-            float ranEnemy = Random.Range(0, pesoTotal);  
-            timeUntilSpawn -= Time.deltaTime;
-            int randSpawnPoint = Random.Range(0, spawnPoints.Length);
-
-
-            if(timeUntilSpawn <= 0){
-                if(0f <= ranEnemy && ranEnemy <= peso1){
-                    Instantiate(enemyPrefab, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1 && ranEnemy <= peso1+peso2){
-                    Instantiate(enemyPrefab2, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1+peso2 && ranEnemy <= peso1+peso2+peso3){
-                    Instantiate(enemyPrefab3, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1+peso2+peso3 && ranEnemy <= peso1+peso2+peso3+peso4){
-                    Instantiate(enemyPrefab4, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-            
-            }
+            // Funcion que spawnea los enemigos y les asigna un porcentaje de aparicion a cada uno
+            // En base a 100%
+            generateEnemy(50f,30f,19.8f,0.2f);
         }
 
+        // Segunda etapa del juego
         else if(timer>120 && timer<=300){
+            // Condicion que verifica el tiempo de aparicion del logro Ninja
             if(timer>=120 && timer<125 && cDisparo==0){
                 if(!audioReproducido2){
                     audioLogro2();
                     audioReproducido2 = true;
                 }
-
+                // Funcion que inicia una secuencia para la aparicion del logro en pantalla
                 StartCoroutine(activarLogro2());
                 if(logroPacifista.transform.position.x <= 500){
                     logroPacifista.transform.position = logroPacifista.transform.position + new Vector3(5,0,0); 
                 }
             }
 
+            // Condicion que desaparece el logro de la pantalla
             else if(logroPacifista.transform.position.x >= -723){
                     logroPacifista.transform.position = logroPacifista.transform.position + new Vector3(-6,0,0); 
             }
 
-            float peso1 = 25;
-            float peso2 = 45;
-            float peso3 = 27;
-            float peso4 = 3;
+            // Se cambian los tiempos de spawn enemies para la segunda etapa
             minimumSpawnTime=1;
             maximumSpawnTime=3;
-            float pesoTotal = peso1 + peso2 + peso3 + peso4;
-            // float pesoAcumulado = 0;
-            float ranEnemy = Random.Range(0, pesoTotal);  
-            timeUntilSpawn -= Time.deltaTime;
-            int randSpawnPoint = Random.Range(0, spawnPoints.Length);
+            generateEnemy(25f,45f,27f,3f);
 
-
-            if(timeUntilSpawn <= 0){
-                if(0f <= ranEnemy && ranEnemy <= peso1){
-                    Instantiate(enemyPrefab, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1 && ranEnemy <= peso1+peso2){
-                    Instantiate(enemyPrefab2, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1+peso2 && ranEnemy <= peso1+peso2+peso3){
-                    Instantiate(enemyPrefab3, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1+peso2+peso3 && ranEnemy <= peso1+peso2+peso3+peso4){
-                    Instantiate(enemyPrefab4, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-            
-            }
         }
 
+        // Tercera etapa
         else if(timer>300){
+            // Condicion para el logro de la etapa final
             if(timer>=300 && timer<305){
                 if(!audioReproducido){
-                    // Debug.Log("segundo 301");
                     audioLogro();
                     audioReproducido = true;
                 }
-                 // Establecer la bandera a true para que no se reproduzca nuevamente
-                      
+                // Establecer la bandera a true para que no se reproduzca nuevamente      
                 StartCoroutine(activarLogro());
                 if(logroRonda.transform.position.x <= 500){
                     logroRonda.transform.position = logroRonda.transform.position + new Vector3(5,0,0); 
@@ -151,49 +100,53 @@ public class EnemySpawner : MonoBehaviour
             else if(logroRonda.transform.position.x >= -723){
                     logroRonda.transform.position = logroRonda.transform.position + new Vector3(-6,0,0); 
             }
-            // else{
-            //     desactivarLogro();
-            // }
-            float peso1 = 10;
-            float peso2 = 40;
-            float peso3 = 40;
-            float peso4 = 10;
+
+            // Tiempo de spawn enemies para la tercera ronda
             minimumSpawnTime=0.5f;
             maximumSpawnTime=2.5f;
-            float pesoTotal = peso1 + peso2 + peso3 + peso4;
-            // float pesoAcumulado = 0;
-            float ranEnemy = Random.Range(0, pesoTotal);  
-            timeUntilSpawn -= Time.deltaTime;
-            int randSpawnPoint = Random.Range(0, spawnPoints.Length);
-
-            
-
-            if(timeUntilSpawn <= 0){
-                if(0f <= ranEnemy && ranEnemy <= peso1){
-                    Instantiate(enemyPrefab, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1 && ranEnemy <= peso1+peso2){
-                    Instantiate(enemyPrefab2, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1+peso2 && ranEnemy <= peso1+peso2+peso3){
-                    Instantiate(enemyPrefab3, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-
-                else if(ranEnemy >= peso1+peso2+peso3 && ranEnemy <= peso1+peso2+peso3+peso4){
-                    Instantiate(enemyPrefab4, spawnPoints[randSpawnPoint].position, Quaternion.identity);
-                    SetTimeUntilSpawn();
-                }
-            
-            }
-        }
-        
+            generateEnemy(10f,40f,40f,10f);
+        }   
     }
 
+    // Funcion que genera enemigos aleatorios en base a un porcentaje sobre 100%
+    private void generateEnemy(float peso1, float peso2, float peso3, float peso4)
+    {
+        // Se declara un peso total en el cual la suma de todos los pesos es igual a 100%
+        float pesoTotal = peso1 + peso2 + peso3 + peso4;
+        // Se obtiene un valor aleatorio del peso
+        float ranEnemy = Random.Range(0, pesoTotal);
+        // Se asigna el tiempo antes de que los enemigos spawneen  
+        timeUntilSpawn -= Time.deltaTime;
+        // Se seleccion un spawn aleatoriamente 
+        int randSpawnPoint = Random.Range(0, spawnPoints.Length);
+
+        // En esta condicion se asignan el spawn del enemigo correspondiente a su peso
+        // Se verifica que el numero arrojado este dentro del peso del enemigo
+        if(timeUntilSpawn <= 0){
+            if(0f <= ranEnemy && ranEnemy <= peso1){
+                Instantiate(enemyPrefab, spawnPoints[randSpawnPoint].position, Quaternion.identity);
+                SetTimeUntilSpawn();
+            }
+
+            else if(ranEnemy >= peso1 && ranEnemy <= peso1+peso2){
+                Instantiate(enemyPrefab2, spawnPoints[randSpawnPoint].position, Quaternion.identity);
+                SetTimeUntilSpawn();
+            }
+
+            else if(ranEnemy >= peso1+peso2 && ranEnemy <= peso1+peso2+peso3){
+                Instantiate(enemyPrefab3, spawnPoints[randSpawnPoint].position, Quaternion.identity);
+                SetTimeUntilSpawn();
+            }
+
+            else if(ranEnemy >= peso1+peso2+peso3 && ranEnemy <= peso1+peso2+peso3+peso4){
+                Instantiate(enemyPrefab4, spawnPoints[randSpawnPoint].position, Quaternion.identity);
+                SetTimeUntilSpawn();
+            }
+        
+        }
+    }
+
+    // Funcion que inicia una secuencia para mostrar y quitar los logros de la pantalla
     private IEnumerator activarLogro()
     {
         logroRonda.SetActive(true);
@@ -201,6 +154,7 @@ public class EnemySpawner : MonoBehaviour
         logroRonda.SetActive(false);
     }
 
+    // Funcion que asigna el audio al logro de ultima ronda
     private void audioLogro(){
         // Debug.Log("reproducir audio");
         List<AudioSource> rondaAudio = new List<AudioSource>();
@@ -215,6 +169,7 @@ public class EnemySpawner : MonoBehaviour
         rondaAudio[0].Play();
     }
 
+    // Audio para el logro ninja
     private void audioLogro2(){
         // Debug.Log("reproducir audio");
         List<AudioSource> pacifistaAudio = new List<AudioSource>();
@@ -229,6 +184,7 @@ public class EnemySpawner : MonoBehaviour
         pacifistaAudio[0].Play();
     }
 
+    // Funcion para aparicion y desaparicion del segundo logro
     private IEnumerator activarLogro2()
     {
         logroPacifista.SetActive(true);
