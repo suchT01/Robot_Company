@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class RockyMovement : MonoBehaviour
 {
     [SerializeField] private GameObject derrota;
-    [SerializeField] private GameObject pausa;
     [SerializeField] private AudioSource disparo;
     [SerializeField] private AudioSource salto;
     [SerializeField] private AudioSource recibeDmg;
@@ -104,11 +103,6 @@ public class RockyMovement : MonoBehaviour
             LastShoot = Time.time;
         }
 
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
-        {
-            pausar();
-        }
-
         if (Input.GetKeyDown(KeyCode.S) && platformCollider != null)
         {
             StartCoroutine(DisablePlatformCollider());
@@ -119,18 +113,6 @@ public class RockyMovement : MonoBehaviour
             mutear();
         }
 
-    }
-
-    private void pausar(){
-        bool valor = true;
-        if(pausa.activeSelf){
-            pausa.SetActive(!valor);
-            Time.timeScale = 1f;
-        }
-        else{
-            pausa.SetActive(valor);
-            Time.timeScale = 0f;
-        }
     }
 
     private void mutear(){

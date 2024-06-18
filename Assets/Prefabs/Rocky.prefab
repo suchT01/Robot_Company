@@ -137,10 +137,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91e0143887e31e45920195f7f1f4d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  derrota: {fileID: 0}
+  pausa: {fileID: 0}
+  disparo: {fileID: 0}
+  salto: {fileID: 0}
+  recibeDmg: {fileID: 0}
+  muere: {fileID: 0}
+  barraDeVida: {fileID: 0}
+  soundEffects: {fileID: 0}
+  iconoMute: {fileID: 0}
   BulletPrefab: {fileID: 3538289356657011368, guid: adeb2f8bd6e74714d80f9097f4005485, type: 3}
   Speed: 10
   JumpForce: 1400
   Health: 100
+  maxFallSpeed: -10
+  maxJumpForce: 0
+  escudo: {fileID: 0}
+  tiempoEscudo: 3
+  contadorDisparos: 0
 --- !u!95 &238708495712036737
 Animator:
   serializedVersion: 5
